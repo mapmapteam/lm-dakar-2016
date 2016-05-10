@@ -34,6 +34,14 @@ abstract class StateAgent extends State {
     parent.addForce(steer(target, true));
   }
 
+  boolean lineRepulse(Line2D line, float strength, float minDistance) {
+    Vec2D desired = parent.sub(line.closestPointTo(parent));
+    float d = desired.magnitude();
+    if (d < minDistance)
+      addForce(desired.normalizeTo(strength));
+    return (d > 0);
+  }
+
   // Separation
   // Method checks for nearby boids and steers away
   Vec2D separate (ArrayList<VerletParticle2D> boids) {
