@@ -6,6 +6,8 @@ class BWorld extends VerletPhysics2D {
 
   ArrayList<BParticle> bParticles;
 
+  ConstantForceBehavior constant;
+
   BWorld() {
     bParticles = new ArrayList<BParticle>();
   }
@@ -13,7 +15,10 @@ class BWorld extends VerletPhysics2D {
   void init(Rect bounds) {
     // Set bounds.
     setWorldBounds(bounds);
-    setDrag(0.05f);
+    setDrag(0.0f);
+    constant = new ConstantForceBehavior(new Vec2D());
+
+    addBehavior(constant);
   }
 
   VerletPhysics2D addParticle(VerletParticle2D p) {
@@ -57,4 +62,9 @@ class BWorld extends VerletPhysics2D {
     }
     return ret;
   }
+
+  void setConstantForce(Vec2D force) {
+    constant.setForce(force);
+  }
+
 }
