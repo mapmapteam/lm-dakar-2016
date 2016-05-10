@@ -20,6 +20,14 @@ abstract class State {
   State react(BWorld world) { return this; }
   void exit() {}
 
+  void addForce(Vec2D force) {
+    parent.addForce(force);
+  }
+
+  void addBehavior(ParticleBehavior2D behavior) {
+    parent.addBehavior(behavior);
+  }
+
   abstract void draw();
 
   abstract String getType();
