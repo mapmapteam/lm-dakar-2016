@@ -1,11 +1,7 @@
 class StateButterfly extends StateAgent {
 
-  float separateWeight, alignWeight, cohesionWeight;
-
   StateButterfly() {
-    separateWeight = 1.0f;
-    alignWeight    = 1.0f;
-    cohesionWeight = 1.0f;
+    setFlockStrength(5);
   }
 
   void enter() {
@@ -17,8 +13,11 @@ class StateButterfly extends StateAgent {
       return new StateTrash();
     else
     {
-      
-      flock( world.getParticlesWithType("state:butterfly"), separateWeight, alignWeight, cohesionWeight);
+      if (parent.y() >= world.getWorldBounds().getBottom()-20)
+        addForce(new Vec2D(0, -5));
+      else
+        addForce(new Vec2D(0, -0.1));
+      flock( world.getParticlesWithType("state:butterfly"));
 
       return this;
     }
