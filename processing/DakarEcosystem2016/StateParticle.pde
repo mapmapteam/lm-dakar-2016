@@ -30,8 +30,8 @@ class StateParticle extends BParticle {
   void draw() {
     pushMatrix();
     translate(x(), y());
-    TestDakarJetDeau.this.scale(getWeight() * WEIGHT_SCALE_FACTOR);
-    TestDakarJetDeau.this.rotate(getVelocity().heading() + radians(270));
+    DakarEcosystem2016.this.scale(getWeight() * WEIGHT_SCALE_FACTOR);
+    DakarEcosystem2016.this.rotate(getVelocity().heading() + radians(270));
     currentState.draw();
     popMatrix();
   }
