@@ -34,7 +34,6 @@ abstract class StateAgent extends State {
     parent.addForce(steer(target, true));
   }
 
-
   // Separation
   // Method checks for nearby boids and steers away
   Vec2D separate (ArrayList<VerletParticle2D> boids) {
@@ -116,14 +115,14 @@ abstract class StateAgent extends State {
   }
 
   // We accumulate a new acceleration each time based on three rules
-  void flock(ArrayList<VerletParticle2D> boids) {
+  void flock(ArrayList<VerletParticle2D> boids, float separateWeight, float alignWeight, float cohesionWeight) {
     Vec2D sep = separate(boids);   // Separation
     Vec2D ali = align(boids);      // Alignment
     Vec2D coh = cohesion(boids);   // Cohesion
     // Arbitrarily weight these forces
-    sep.scaleSelf(1.5);
-    ali.scaleSelf(1.0);
-    coh.scaleSelf(1.0);
+    sep.scaleSelf(separateWeight);
+    ali.scaleSelf(alignWeight);
+    coh.scaleSelf(cohesionWeight);
     // Add the force vectors to acceleration
     parent.addForce(sep);
     parent.addForce(ali);
