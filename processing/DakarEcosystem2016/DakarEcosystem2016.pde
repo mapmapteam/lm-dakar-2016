@@ -20,7 +20,8 @@ void setup() {
 
   // Create world.
   world = new BWorld();
-  world.init(new Rect(0, 0, width, height));
+  world.init(20);
+//  world.init(new Rect(0, 0, width, height));
 
   // the NEW way to add gravity to the simulation, using behaviors
   //world.addBehavior(new GravityBehavior(new Vec2D(0, 0.015f)));

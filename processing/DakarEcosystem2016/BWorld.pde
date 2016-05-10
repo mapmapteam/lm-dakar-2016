@@ -12,10 +12,11 @@ class BWorld extends VerletPhysics2D {
     bParticles = new ArrayList<BParticle>();
   }
 
-  void init(Rect bounds) {
+  void init(int pixelOffset) {
     // Set bounds.
-    setWorldBounds(bounds);
-    setDrag(0.0f);
+    setWorldBounds(new Rect(pixelOffset, pixelOffset, width-2*pixelOffset, height-2*pixelOffset));
+//    setWorldBounds(bounds);
+    setDrag(0.05f);
     constant = new ConstantForceBehavior(new Vec2D());
 
     addBehavior(constant);
