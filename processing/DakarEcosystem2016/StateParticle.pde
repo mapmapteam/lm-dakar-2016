@@ -22,8 +22,8 @@ class StateParticle extends BParticle {
   void react(BWorld world) {
     // Ask for state reaction and get next state.
     State state = currentState.react(world);
-    if (state != currentState)
-      currentState.exit();
+    // if (state != currentState)
+    //   currentState.exit();
     setState(state);
   }
 

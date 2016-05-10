@@ -7,8 +7,13 @@ abstract class State {
 
   StateParticle getParent() { return parent; }
   void setParent(StateParticle parent) {
-    this.parent = parent;
-    enter();
+    if (parent != this.parent)
+    {
+      if (this.parent != null)
+        exit();
+      this.parent = parent;
+      enter();
+    }
   }
 
   void enter() {}
