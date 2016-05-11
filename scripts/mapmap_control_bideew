@@ -4,17 +4,10 @@
 """
 Sends OSC messages using txosc
 """
-import exceptions
-import sys
-import optparse
-import socket
 from twisted.internet import reactor
 from twisted.internet import defer
-import txosc # for __version__
 from txosc import osc
-from txosc import dispatch
 from txosc import async
-from txosc import sync
 
 
 
